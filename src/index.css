@@ -5,9 +5,62 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.content{
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.board{
+   background:#61dafb;
+   height:350px;
+   width:350px;
+   display:grid;
+   grid-template-columns:1fr 1fr 1fr;
+   grid-template-rows:1fr 1fr 1fr;
+   margin:5rem auto;
+   box-shadow:1px 1px 15px white;
+   user-select: none;
+   cursor:pointer;
+}
+.board_tiles{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border:1px solid white;
+
+  color:white;
+  font-size:4rem;
+  font-weight: bold;
+}
+.board_tiles:active{
+  background-color:lightgrey;
+}
+.playerDetails{
+  color:#61dafb;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+button{
+  background-color:#61dafb;
+  margin-left: 130px;
+  width: 100px;
+  height: 30px;
+  color:whitesmoke;
+  font-weight: bold;
+  cursor: pointer;
 }
