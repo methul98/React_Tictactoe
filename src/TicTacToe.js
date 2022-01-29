@@ -9,7 +9,7 @@ function Tictactoe(){
     ])
     const [player,setPlayer]=useState('X');
     const [lastIndx,setLastindx]=useState(-1);
-
+    const[clicks,setClicks]=useState(0);
     const changeTile=(idx)=>{
         //console.log(player,i);
         // const result=board.map((val,i)=>{
@@ -47,6 +47,8 @@ function Tictactoe(){
 
        // console.log(pattern[lastIndx]);
        const checkArr=pattern[lastIndx];
+       setClicks(clicks+1);
+       console.log(clicks);
        console.log("Checking Win");
        const prevPlayer=player==="X" ? "O" : "X";
        //check each adjacent tile whether they have same x or O
@@ -55,8 +57,15 @@ function Tictactoe(){
                 board[arr[1]]===prevPlayer && 
                 board[arr[2]]===prevPlayer)
             {
-                 alert(`${prevPlayer} Won the game`);
+                alert(`${prevPlayer} Won the game`);
                  reset();
+            }else{
+                //condition for match drawn
+                if(clicks===8)
+                {
+                    alert("Math Drawn");
+                    reset();
+                }
             }
        });
     }
@@ -70,6 +79,7 @@ function Tictactoe(){
         ]);
         setPlayer("X");
         setLastindx(-1);
+        setClicks(0);
     }
 
     useEffect(()=>{
