@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import pattern from "./winPattern";
-
+var clicks=0;
 function Tictactoe(){
     const [board,setBoard]=useState([
         '','','',
@@ -9,7 +9,6 @@ function Tictactoe(){
     ])
     const [player,setPlayer]=useState('X');
     const [lastIndx,setLastindx]=useState(-1);
-    const[clicks,setClicks]=useState(0);
     const changeTile=(idx)=>{
         //console.log(player,i);
         // const result=board.map((val,i)=>{
@@ -47,7 +46,7 @@ function Tictactoe(){
 
        // console.log(pattern[lastIndx]);
        const checkArr=pattern[lastIndx];
-       setClicks(clicks+1);
+       clicks+=1;
        console.log(clicks);
        console.log("Checking Win");
        const prevPlayer=player==="X" ? "O" : "X";
@@ -58,16 +57,22 @@ function Tictactoe(){
                 board[arr[2]]===prevPlayer)
             {
                 alert(`${prevPlayer} Won the game`);
-                 reset();
-            }else{
-                //condition for match drawn
-                if(clicks===8)
-                {
-                    alert("Math Drawn");
-                    reset();
-                }
+                clicks=0;
+                reset();
+            }
+            if(clicks===9)
+            {
+                clicks+=1;
             }
        });
+
+       if(clicks===10)
+       {
+            alert(`Match Drawn`);
+            clicks=0;
+            reset();
+       }
+     
     }
     
     //reset the game after one won that game
@@ -79,7 +84,6 @@ function Tictactoe(){
         ]);
         setPlayer("X");
         setLastindx(-1);
-        setClicks(0);
     }
 
     useEffect(()=>{
